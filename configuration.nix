@@ -44,12 +44,21 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.enable = true;
+  services.xserver = {
+    # Enable X11
+    enable = true;
 
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.options = "";
+    # Enable Gnome
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+   
+    # Keyboard
+    xkb.layout = "us";
+    xkb.variant = "";
 
-  services.xserver.videoDrivers = [ "qxl" ];
+    # QXL Video Driver
+    videoDrivers = [ "qxl" ];
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
